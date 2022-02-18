@@ -1,0 +1,60 @@
+//用 "\n"把句子串在一起 
+#include<iostream>
+#include<string>
+#include<stdio.h>
+using namespace std;
+int main(){
+	string line;
+	int n,m,count=1;
+	while(cin>>n && n){
+		bool flag=1;
+	//	getline(cin,line);
+	getchar();
+		string stan="";
+		string out="";
+		for(int i=0;i<n;i++){
+			getline(cin,line);
+			if(i){
+				stan+='\n',stan+=line;
+			}
+			else{
+				stan=line;
+			}
+		}
+	cin>>m;
+	//getline(cin,line);
+	getchar();
+		for(int i=0;i<m;i++){
+			getline(cin,line);
+			if(i){
+				out+='\n',out+=line;
+			}
+			else out=line;		
+		}
+
+	bool flag2=1;
+        if(stan!=out)	flag2=0;
+        	
+		if(flag2){
+			cout<<"Run #"<<count<<": Accepted"<<endl;
+        	count++;
+        	continue;
+		} 
+        	for(int i=0;i<stan.length();i++){
+        		if(!isdigit(stan[i])) stan.erase(i,1), i--;
+			}
+			for(int i=0;i<out.length();i++){
+				if(!isdigit(out[i])) out.erase(i,1), i--;
+			}
+		if(stan!=out) flag=0;	
+		if(flag){
+		    cout<<"Run #"<<count<<": Presentation Error"<<endl;
+		    }
+	    else  cout<<"Run #"<<count<<": Wrong Answer"<<endl;
+	    
+	
+		count++;
+	}
+	
+	return 0;
+}
